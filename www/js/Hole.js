@@ -1,3 +1,10 @@
+//
+// Author: Alejandro Benítez López
+//
+// © benitezdev 2019 (benitezdev.com)
+// Creative Commons License:
+// Attribution 4.0 International (CC BY 4.0)
+//
 
 
 function Hole(position, radius) {
@@ -6,6 +13,7 @@ function Hole(position, radius) {
     this.radius = radius;
 
     this.sfx = audio.hit;
+
 }
 
 Hole.prototype.start = function () {
@@ -16,16 +24,17 @@ Hole.prototype.update = function () {
 
     // Check if a ball has entered a hole
     currentScene.ballPools.forEach(ball => {
+
         if (CircleInsideCircle(this.position, this.radius, ball.position, ball.radius * ball.scale)) {
 
-            if (ball.owner == 'player1') {
+            if (ball.owner == 'player1')
                 currentScene.scores[0].addOnePoint(ball.img);
-            } else if (ball.owner == 'player2')
+            else if (ball.owner == 'player2')
                 currentScene.scores[1].addOnePoint(ball.img);
-            else {
+            else
                 // rare rare case... just in case...
                 currentScene.createBallInCenter(ball.img);
-            }
+
 
             currentScene.ballPools.splice(currentScene.ballPools.indexOf(ball), 1);
             PoolGame.world.DestroyBody(ball.collider);
@@ -41,10 +50,12 @@ Hole.prototype.update = function () {
 Hole.prototype.draw = function () {
 
     Canvas._ctx.save();
+
     Canvas._ctx.beginPath();
     Canvas._ctx.arc(this.position.x, this.position.y, this.radius, 0, 2 * Math.PI);
     Canvas._ctx.closePath();
     Canvas._ctx.stroke();
+
     Canvas._ctx.restore();
 
 }

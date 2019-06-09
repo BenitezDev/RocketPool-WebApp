@@ -1,12 +1,16 @@
-
-
+//
+// Author: Alejandro Benítez López
+//
+// © benitezdev 2019 (benitezdev.com)
+// Creative Commons License:
+// Attribution 4.0 International (CC BY 4.0)
+//
 
 
 function OptionsMenu(active, position, img, width, height, scale) {
 
-    // if (!position) position = new Vector2();
-    // this.position = position;
     this.active = active;
+
     if (!scale) scale = 1;
     this.scale = scale;
 
@@ -26,11 +30,6 @@ function OptionsMenu(active, position, img, width, height, scale) {
         height: Canvas._canvas.height
     }
 
-    // if (!aux) aux = "hola mundo";
-    // this.aux = aux;
-
-    // if (!onclick) onclick = function () { alert(aux) };
-    // this.onclick = onclick;
 
     this.start();
 
@@ -38,33 +37,38 @@ function OptionsMenu(active, position, img, width, height, scale) {
 
 
 OptionsMenu.prototype.start = function () {
+
     this.position = new Vector2(this.position.x - this.halfWidth, this.position.y - this.halfHeight);
+
 }
 
 
 OptionsMenu.prototype.update = function () {
 
-    if (this.active && /*input.isKeyDown(KEY_SCAPE)*/input.tap.pressed) {
-        //this.hide();
+    if (this.active && input.tap.pressed)
         PoolGame.ChangeSceneTo(scenesTAGs.GAME);
-    }
 
 }
 
 
 
 OptionsMenu.prototype.draw = function () {
+
     if (this.active)
         Canvas.drawImage(this.img, this.position);
 
 }
 
 OptionsMenu.prototype.show = function () {
+
     this.active = true;
+
 }
 
 
 
 OptionsMenu.prototype.hide = function () {
+
     this.active = false;
+
 }

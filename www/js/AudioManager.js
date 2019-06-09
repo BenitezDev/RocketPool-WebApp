@@ -1,3 +1,10 @@
+//
+// Author: Alejandro Benítez López
+//
+// © benitezdev 2019 (benitezdev.com)
+// Creative Commons License:
+// Attribution 4.0 International (CC BY 4.0)
+//
 
 
 function AudioManager() {
@@ -8,21 +15,11 @@ function AudioManager() {
 }
 
 
-
-
-AudioManager.prototype.start = function () {
-
-}
-
-
-AudioManager.prototype.update = function () {
-
-}
-
-
 AudioManager.prototype.playFx = function (fx, volume) {
+
     fx.volume = volume;
     fx.play();
+
 }
 
 
@@ -33,4 +30,5 @@ AudioManager.prototype.playBackgroundMusic = function (audio, loop) {
 
     this.backgroundAudio.play();
     this.backgroundAudio.loop = loop;
+
 }

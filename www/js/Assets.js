@@ -1,8 +1,19 @@
-// Load all the assets before starting starting the game
+//
+// Author: Alejandro Benítez López
+//
+// © benitezdev 2019 (benitezdev.com)
+// Creative Commons License:
+// Attribution 4.0 International (CC BY 4.0)
+//
+
+
+// Load all assets before starting the game
+
 
 var sprites = {};
 var audio = {};
 var assetsStillLoading = 0;
+
 
 function assetsLoadingLoop(callback) {
 
@@ -15,11 +26,10 @@ function assetsLoadingLoop(callback) {
 
 }
 
+
 function loadAssets(callback) {
 
     function loadSprite(fileName) {
-
-        //Canvas.drawText(1 + "%");
 
         assetsStillLoading++;
 
@@ -37,32 +47,25 @@ function loadAssets(callback) {
 
     function loadAudio(fileName, volume) {
 
-        //assetsStillLoading++;
+        assetsStillLoading++;
 
         let audio = new Audio("./assets/audio/" + fileName);
         audio.volume = volume;
 
-        // audio.src = "./assets/audio/" + fileName;
-        // audio.oncanplaythrough  = function () {
-        //     assetsStillLoading--;
-        //     audio.play();
-        // }
-
-        // audio.addEventListener("oncanplaythrough ", function () {
-        //     assetsStillLoading--;
-        //     audio.play();
-        // });
-
-
-        // audio.oncanplaythrough  = function () {
-        //     assetsStillLoading--;
-        // }
+        audio.oncanplaythrough = function () {
+            assetsStillLoading--;
+        }
 
         return audio;
+
     }
 
-    // Sprites
+
+
+    // Sprites to load:
+    sprites.rocket_pool = loadSprite('rocket_pool.png');
     sprites.background = loadSprite('background.png');
+    sprites.controles = loadSprite('controles.png');
     sprites.car = loadSprite('car_1.png');
     sprites.car_2 = loadSprite('car_2.png');
     sprites.wheel = loadSprite('wheel.png')
@@ -80,15 +83,16 @@ function loadAssets(callback) {
     sprites.options = loadSprite('options.png');
     sprites.menu_background = loadSprite('menu_background.png');
     sprites.win_scene = loadSprite('win_screen.png');
+    sprites.end_game = loadSprite('game_over.png');
 
-    // Audio
-    audio.main_Theme = loadAudio('main_theme.mp3', 0.5);
+    // Audios to load:
+    audio.main_Theme = loadAudio('main_theme.mp3', 0.3);
     audio.hit = loadAudio('hit.wav', 1);
     audio.balls_collide = loadAudio('balls_collide.wav', 1);
     audio.table_hit = loadAudio('table_hit.wav', 1);
     audio.strike = loadAudio('strike.wav', 1);
     audio.hole = loadAudio('hole.wav', 1);
-    audio.pitido_futbol = loadAudio('pitido_futbol.mp3',1);
+    audio.pitido_futbol = loadAudio('pitido_futbol.mp3', 1);
 
     assetsLoadingLoop(callback);
 

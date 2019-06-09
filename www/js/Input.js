@@ -1,3 +1,4 @@
+
 // key events
 var lastPress = null;
 
@@ -22,11 +23,11 @@ const KEY_8 = 56;
 const KEY_9 = 57;
 
 var input = {
-    
-    tap:{
-     x:0,
-     y:0,
-     pressed: false
+
+    tap: {
+        x: 0,
+        y: 0,
+        pressed: false
     },
 
     mouse: {
@@ -69,21 +70,27 @@ var input = {
 function SetupKeyboardEvents() {
 
     AddEvent(document, "keydown", function (e) {
+
         console.log(e.keyCode);
         input.keyboard[e.keyCode] = true;
         input.keyboard.keypressed[e.keyCode] = true;
+
     });
 
     AddEvent(document, "keyup", function (e) {
+
         input.keyboard.keyup[e.keyCode] = true;
         input.keyboard[e.keyCode] = false;
+
     });
 
     function AddEvent(element, eventName, func) {
+
         if (element.addEventListener)
             element.addEventListener(eventName, func, false);
         else if (element.attachEvent)
             element.attachEvent(eventName, func);
+
     }
 
 }
@@ -91,97 +98,95 @@ function SetupKeyboardEvents() {
 
 function SetupMouseEvents() {
 
-    // mouse click event
+    // MOUSE CLICK
     Canvas._canvas.addEventListener("mousedown", MouseDown, false);
-    // mouse move event
     Canvas._canvas.addEventListener("mousemove", MouseMove, false);
-    // mouse up event
     Canvas._canvas.addEventListener("mouseup", MouseUp, false);
 
     // TAP
-    Canvas._canvas.addEventListener("touchstart",TapDown, false);
-    Canvas._canvas.addEventListener("touchmove",TapMove, false);
-    Canvas._canvas.addEventListener("touchend",TapUp, false);
-
-
-    // Canvas._canvas.addEventListener("touchend",function (e){
-    //     var touch = e.changedTouches[0];
-        
-    //     console.log(touch.clientX + " " + touch.clientY);
-        
-    //     //console.log(touch.clientX + " "+touch.clientY);
-    //     //canvas.dispatchEvent(mouseEvent);
-    // }, false);
+    Canvas._canvas.addEventListener("touchstart", TapDown, false);
+    Canvas._canvas.addEventListener("touchmove", TapMove, false);
+    Canvas._canvas.addEventListener("touchend", TapUp, false);
 
 }
 
 function MouseDown(event) {
 
     var rect = Canvas._canvas.getBoundingClientRect();
+
     var clickX = event.clientX - rect.left;
     var clickY = event.clientY - rect.top;
 
     input.mouse.pressed = true;
 
-    console.log("MouseDown: " + "X=" + clickX + ", Y=" + clickY);
+    //console.log("MouseDown: " + "X=" + clickX + ", Y=" + clickY);
 
 }
 
 function MouseUp(event) {
 
     var rect = Canvas._canvas.getBoundingClientRect();
+
     var clickX = event.clientX - rect.left;
     var clickY = event.clientY - rect.top;
 
     input.mouse.pressed = false;
 
-    console.log("MouseUp: " + "X=" + clickX + ", Y=" + clickY);
+    //console.log("MouseUp: " + "X=" + clickX + ", Y=" + clickY);
 
 }
 
 function MouseMove(event) {
 
     var rect = Canvas._canvas.getBoundingClientRect();
+
     input.mouse.x = event.clientX - rect.left;
     input.mouse.y = event.clientY - rect.top;
 
 }
 
-function TapDown(event){
+function TapDown(event) {
+
     var touch = event.changedTouches[0];
+
     var rect = Canvas._canvas.getBoundingClientRect();
+
     var clickX = touch.clientX - rect.left;
     var clickY = touch.clientY - rect.top;
 
     input.tap.pressed = true;
-  
 
-    console.log("TAPdown: " + "X=" + clickX + ", Y=" + clickY);
+    //console.log("TAPdown: " + "X=" + clickX + ", Y=" + clickY);
 
 }
 
 function TapUp(event) {
+
     var touch = event.changedTouches[0];
+
     var rect = Canvas._canvas.getBoundingClientRect();
+
     var clickX = touch.clientX - rect.left;
     var clickY = touch.clientY - rect.top;
 
     input.tap.pressed = false;
+
     input.tap.x = clickX;
     input.tap.y = clickY;
 
-    console.log("TAPup: " + "X=" + clickX + ", Y=" + clickY);
+    //console.log("TAPup: " + "X=" + clickX + ", Y=" + clickY);
 
 }
 
 function TapMove(event) {
+
     var touch = event.changedTouches[0];
+
     var rect = Canvas._canvas.getBoundingClientRect();
+
     var clickX = touch.clientX - rect.left;
     var clickY = touch.clientY - rect.top;
 
-   
-
-    console.log("TAPmove: " + "X=" + clickX + ", Y=" + clickY);
+    //console.log("TAPmove: " + "X=" + clickX + ", Y=" + clickY);
 
 }

@@ -1,8 +1,16 @@
-
+//
+// Author: Alejandro Benítez López
+//
+// © benitezdev 2019 (benitezdev.com)
+// Creative Commons License:
+// Attribution 4.0 International (CC BY 4.0)
+//
 
 
 function Button(position, img, width, height, scale, onclick, aux, rotation) {
+
     this.rotation = typeof rotation !== 'undefined' ? rotation : null;
+
     if (!position) position = new Vector2();
     this.position = position;
 
@@ -22,7 +30,7 @@ function Button(position, img, width, height, scale, onclick, aux, rotation) {
         width: this.width,
         height: this.height
     }
-    //if (!aux) aux = "hola mundo";
+
     this.aux = aux;
 
     if (!onclick) onclick = function () { alert(aux) };
@@ -37,17 +45,15 @@ Button.prototype.start = function () {
 
     this.position = new Vector2(this.position.x - this.halfWidth, this.position.y - this.halfHeight);
 
-    this.enable();
-
 }
 
 
 Button.prototype.update = function () {
 
-    if ( 
-        PointInsideRectangle(input.tap, this.rectangle) /*&& input.tap.pressed*/|| 
+    if (
+        PointInsideRectangle(input.tap, this.rectangle) ||
         (PointInsideRectangle(input.mouse, this.rectangle) && input.mouse.pressed)
-     ) {
+    ) {
 
         console.log("Click on button");
         this.onclick(this.aux);
@@ -56,19 +62,11 @@ Button.prototype.update = function () {
 
 }
 
-Button.prototype.enable = function(){
-   // Canvas._canvas.addEventListener("mouseup", this.mouseUp.bind(this), false);
-}
-
-Button.prototype.disable = function(){
-    //Canvas._canvas.removeEventListener("mouseup", this.mouseUp, false);
-}
-
-
 Button.prototype.draw = function () {
 
     Canvas.drawImage(this.img, this.position, this.rotation);
 
+    // Debug button collider
 
     // Canvas._ctx.beginPath();
     // Canvas._ctx.lineWidth = "1.5";
@@ -78,14 +76,3 @@ Button.prototype.draw = function () {
     // Canvas._ctx.stroke();
 
 }
-
-Button.prototype.mouseUp = function () {
-    
-    // if (PointInsideRectangle(input.mouse, this.rectangle)) {
-    //     console.log("Click on button " + this.mouseUp);
-    //     this.onclick(this.aux);
-    //     Canvas._canvas.removeEventListener("mouseup", this.mouseUp.bind(this), false);
-
-    // }
-}
-

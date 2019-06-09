@@ -1,6 +1,13 @@
+//
+// Author: Alejandro Benítez López
+//
+// © benitezdev 2019 (benitezdev.com)
+// Creative Commons License:
+// Attribution 4.0 International (CC BY 4.0)
+//
 
 
-// FPS
+// FPS Global variables
 let time = 0;
 let FPS = 60;
 let frames = 0;
@@ -25,19 +32,22 @@ fps.prototype.computeFPS = function () {
     // If the time is greater than 1 sec is discarded
     if (deltaTime > 1000)
         deltaTime = 0;
+
     time = now;
 
     frames++;
     acumDelta += deltaTime;
 
     if (acumDelta > 1000) {
+
         FPS = frames;
         frames = 0;
         acumDelta -= 1000;
+
     }
 
     targetDT = (1 / FPS * 1000);
-    
+
 }
 
 fps.prototype.draw = function (color) {

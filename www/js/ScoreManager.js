@@ -1,4 +1,10 @@
-
+//
+// Author: Alejandro Benítez López
+//
+// © benitezdev 2019 (benitezdev.com)
+// Creative Commons License:
+// Attribution 4.0 International (CC BY 4.0)
+//
 
 
 function ScoreManager(goal, position) {
@@ -13,6 +19,7 @@ function ScoreManager(goal, position) {
     this.winPopUp = null;
 
     this.start();
+
 }
 
 ScoreManager.prototype.start = function () {
@@ -52,19 +59,10 @@ ScoreManager.prototype.start = function () {
             PoolGame.ChangeSceneTo,
             scenesTAGs.INTRO
         );
-        this.buttonPlayAgain.disable();
+
 }
 
 ScoreManager.prototype.update = function () {
-
-
-    // if (this.winPopUp.active) {
-    //     this.buttonPlayAgain.update();
-    // }
-    // if (this.winPopUp.active && input.isKeyPressed(KEY_SPACE)) {
-    //     PoolGame.ChangeSceneTo(scenesTAGs.INTRO);
-    // }
-
 
 }
 
@@ -82,64 +80,41 @@ ScoreManager.prototype.draw = function () {
         i++;
     }
 
-    // if (this.winPopUp.active) {
-    //     this.winPopUp.draw();
-    //     this.buttonPlayAgain.draw();
-    // }
-
 }
 
 
 
 ScoreManager.prototype.drawEmptyBall = function (i) {
+
     Canvas._ctx.beginPath();
 
     this.gradient = Canvas._ctx.createRadialGradient(
         this.position.x + this.spaceBtwBalls * i - 4, this.position.y - 4, this.innerRadius,
-        this.position.x + this.spaceBtwBalls * i, this.position.y, this.outerRadius);
+        this.position.x + this.spaceBtwBalls * i, this.position.y, this.outerRadius
+    );
 
     this.gradient.addColorStop(0.1, 'grey');
     this.gradient.addColorStop(1, 'black');
 
     Canvas._ctx.fillStyle = this.gradient;
     Canvas._ctx.arc(this.position.x + this.spaceBtwBalls * i, this.position.y, this.radius, 0, this.pi2);
-
     Canvas._ctx.fill();
+
     Canvas._ctx.closePath();
-
-
-    // Canvas._ctx.beginPath();
-    // Canvas._ctx.fillStyle = 'red';
-    // Canvas._ctx.arc(this.position.x + this.spaceBtwBalls * i, this.position.y, 3, 0, 2 * Math.PI);
-    // Canvas._ctx.fill();
-    // Canvas._ctx.stroke();
 
 }
 
 ScoreManager.prototype.addOnePoint = function (img) {
+
     this.currentPoints++;
     this.ballpool.push(img);
 
     if (this.currentPoints >= this.maxPoints) {
 
         // Just in case...
-        if(currentScene == PoolGame.scenes[scenesTAGs.GAME]){
+        if (currentScene == PoolGame.scenes[scenesTAGs.GAME])
             currentScene.checkEndGame();
-        }
-            
-        
-        //this.winPopUp.show();
-        //this.buttonPlayAgain.enable();
 
-
-
-        // TODO: sound end game
     }
-
-
-}
-
-
-ScoreManager.prototype.checkIfWin = function () {
 
 }

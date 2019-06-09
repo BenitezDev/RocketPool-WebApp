@@ -18,8 +18,9 @@
     under the License.
 -->
 <html>
-    <head>
-        <!--
+
+<head>
+    <!--
         Customize this policy to fit your own app's needs. For more guidance, see:
             https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
         Some notes:
@@ -28,75 +29,79 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
-        <link rel="stylesheet" type="text/css" href="css/index.css">
-        <title>RocketPool</title>
-    </head>
-    <body>
-        <div class="app" style="display:none">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <title>Rocket Pool</title>
+</head>
+
+<body>
+    <div class="app" style="display:none">
+        <h1>Apache Cordova</h1>
+        <div id="deviceready" class="blink">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
+        </div>
+    </div>
+
+    <div id="canvasContainer">
+
+        <div id="buttonsLeft" class="ButtonGroup">
+
+            <div id="L1"></div><br><br>
+            <div id="R1"></div><br><br>
+            <div id="F1"></div><br><br>
+            <div id="B1"></div><br><br>
+
         </div>
 
-        <div id="canvasContainer">
-                <div id="buttonsLeft" class="ButtonGroup">
+        <div id="buttonsRight" class="ButtonGroup">
 
-                        <div id="L1"></div><br><br>
-                        <div id="R1"></div><br><br>
-                        <div id="F1"></div><br><br>
-                        <div id="B1"></div><br><br>
-                      
-                    </div>
-            
-                    <div id="buttonsRight"class="ButtonGroup">
-                        <div id="B2" ></div><br><br>
-                        <div id="F2" ></div><br><br>
-                        <div id="R2"></div><br><br>
-                        <div id="L2"></div><br><br>
-                    </div>
-                    <!--
-            <canvas id="my_canvas" width="1920" height="1080"></canvas>
-            -->
-            <canvas id="my_canvas" width="800" height="480"></canvas>
+            <div id="B2"></div><br><br>
+            <div id="F2"></div><br><br>
+            <div id="R2"></div><br><br>
+            <div id="L2"></div><br><br>
+
         </div>
 
-        <script type="text/javascript" src="cordova.js"></script>
-        
+        <canvas id="myCanvas" width="800" height="480"></canvas>
+    </div>
 
-        <!-- My scripts -->
-        <script src="js/Hammer.js"></script>
-        <script src="js/Vector2.js"></script>
-        <script src="js/Canvas.js"></script>
-        <script src="js/Assets.js"></script>
-    
-        <script src="js/GameScene.js"></script>
-        <script src="js/Game.js"></script>
-        <script src="js/Ball.js"></script>
-        <script src="js/Input.js"></script>
-        <script src="js/Box2D.js"></script>
-        <script src="js/physics.js"></script>
-        <script src="js/Car.js"></script>
-        <script src="js/FPS.js"></script>
-        <script src="js/Hole.js"></script>
-    
-        <script src="js/CollisionChecker.js"></script>
-        <script src="js/MenuScene.js"></script>
-        <script src="js/Button.js"></script>
-        <script src="js/OptionsMenu.js"></script>
-        <script src="js/AudioManager.js"></script>
-        <script src="js/ScoreManager.js"></script>
-        <script src="js/Timer.js"></script>
-        <script src="js/MobileInputs.js"></script>
-        <script src="js/InitializeGame.js"></script>    
-        
+    <script type="text/javascript" src="cordova.js"></script>
 
-        <script type="text/javascript" src="js/index.js"></script>
 
-    </body>
+    <!-- My scripts -->
+    <script src="js/Hammer.js"></script>
+    <script src="js/Vector2.js"></script>
+    <script src="js/Canvas.js"></script>
+    <script src="js/Assets.js"></script>
+
+    <script src="js/GameScene.js"></script>
+    <script src="js/Game.js"></script>
+    <script src="js/Ball.js"></script>
+    <script src="js/Input.js"></script>
+    <script src="js/Box2D.js"></script>
+    <script src="js/physics.js"></script>
+    <script src="js/Car.js"></script>
+    <script src="js/FPS.js"></script>
+    <script src="js/Hole.js"></script>
+
+    <script src="js/CollisionChecker.js"></script>
+    <script src="js/MenuScene.js"></script>
+    <script src="js/Button.js"></script>
+    <script src="js/OptionsMenu.js"></script>
+    <script src="js/AudioManager.js"></script>
+    <script src="js/ScoreManager.js"></script>
+    <script src="js/Timer.js"></script>
+    <script src="js/MobileInputs.js"></script>
+    <script src="js/InitializeGame.js"></script>
+
+
+    <script type="text/javascript" src="js/index.js"></script>
+
+</body>
+
 </html>

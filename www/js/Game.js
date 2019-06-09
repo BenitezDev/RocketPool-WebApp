@@ -1,22 +1,27 @@
+//
+// Author: Alejandro Benítez López
+//
+// © benitezdev 2019 (benitezdev.com)
+// Creative Commons License:
+// Attribution 4.0 International (CC BY 4.0)
+//
 
 
 
 const scenesTAGs = {
     INTRO: 0,
-    GAME: 1,
-    // mainMENU: 1,
-    // GAME: 2,
-    // CREDITS: 3
+    GAME: 1
 }
 
 let currentScene = null;
 
-
-
 let PoolGame = new Game();
+
 let audioManager = null;
 
 let mobileInputs = null;
+
+
 
 function Game() {
 
@@ -40,7 +45,7 @@ Game.prototype.start = function () {
 
     PoolGame.init();
 
-    // prevent right click
+    // Prevent right click
     document.addEventListener('contextmenu', event => event.preventDefault());
 
     PoolGame.SetupInput();
@@ -75,21 +80,21 @@ Game.prototype.mainLoop = function () {
     }
 
     input.update();
+    mobileInputs.update();
 
-   
 
     // Current Scene
     currentScene.update();
     currentScene.draw();
 
-    mobileInputs.update();
-
-    if (input.isKeyPressed(KEY_1)) PoolGame.ChangeSceneTo(scenesTAGs.INTRO);
-    if (input.isKeyPressed(KEY_2)) PoolGame.ChangeSceneTo(scenesTAGs.GAME);
 
     // Debug
+
+    // if (input.isKeyPressed(KEY_1)) PoolGame.ChangeSceneTo(scenesTAGs.INTRO);
+    // if (input.isKeyPressed(KEY_2)) PoolGame.ChangeSceneTo(scenesTAGs.GAME);
+
     //if (PoolGame.world) PoolGame.world.DrawDebugData(); // Visual Debug Physics
-    PoolGame.fpsManager.draw('pink'); // FPS Stats
+    //PoolGame.fpsManager.draw('pink'); // FPS Stats
 
     PoolGame.postUpdate();
 
@@ -98,7 +103,9 @@ Game.prototype.mainLoop = function () {
 }
 
 Game.prototype.postUpdate = function () {
+
     input.postUpdate();
+
 }
 
 
@@ -145,6 +152,8 @@ Game.prototype.ChangeSceneTo = function (newScene) {
 }
 
 Game.prototype.PrepareAudioManager = function () {
+
     audioManager = new AudioManager();
-    //audioManager.playBackgroundMusic(PoolGame.backgroundAudio, true);
+    audioManager.playBackgroundMusic(PoolGame.backgroundAudio, true);
+
 }

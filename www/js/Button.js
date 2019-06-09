@@ -50,10 +50,9 @@ Button.prototype.start = function () {
 
 Button.prototype.update = function () {
 
-    if (
-        PointInsideRectangle(input.tap, this.rectangle) ||
-        (PointInsideRectangle(input.mouse, this.rectangle) && input.mouse.pressed)
-    ) {
+    // When adapting the canvas to the screen resolution, the input coordinates get out of control. 
+    // Therefore, the first touch on the screen activates the button
+    if (input.tap.pressed) {
 
         console.log("Click on button");
         this.onclick(this.aux);
